@@ -1,0 +1,11 @@
+#+title: Mark Hartigan
+#+author: Mark Hartigan
+#+email: hartigan@purdue.edu
+#+date: December 28, 2020
+#+OPTIONS: toc:nil
+
+* Welcome to my site.
+
+I don't have much to offer yet.
+
+Please accept [[file:docs/cv.pdf][my CV]] as an offering.
