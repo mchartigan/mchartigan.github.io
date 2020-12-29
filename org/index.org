@@ -2,7 +2,24 @@
 #+author: Mark Hartigan
 #+email: hartigan@purdue.edu
 #+date: December 28, 2020
-#+OPTIONS: toc:nil
+#+options: toc:nil
+#+options: html-link-use-abs-url:nil html-postamble:auto
+#+options: html-preamble:t html-scripts:t html-style:t
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home: index.html
+#+html_link_up:
+#+html_mathjax:
+#+html_head:
+#+html_head_extra:
+#+subtitle:
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+#+latex_header:
+
 
 * Welcome to my site.
 
