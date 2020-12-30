@@ -1,4 +1,4 @@
-#+title: Mark Hartigan
+#+title: Links
 #+author: Mark Hartigan
 #+email: hartigan@purdue.edu
 #+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
@@ -11,7 +11,7 @@
 #+description:
 #+keywords:
 #+html_link_home: index.html
-#+html_link_up:
+#+html_link_up: index.html
 #+html_mathjax:
 #+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
 #+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
@@ -21,17 +21,10 @@
 #+infojs_opt:
 #+latex_header:
 
-* Welcome to my site
+* Fun places to visit
 
-I'm a senior at Purdue University studying aerospace engineering and minoring in computer science; currently applying to graduate programs to study autonomy and control for space applications
-
-Here's [[file:ref/cv.pdf][my CV]]
-
-Find me on [[file:links.html][the internet]]
-
-* Current projects
-
-In order of priority:
-1) Getting a functioning website
-2) Creating a miniature web-based live LaTeX editor ([[https://github.com/mchartigan/LiveTeX][LiveTex]])
-3) Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Pi-Walkman]] platform
++ [[https://github.com/mchartigan][Github]]
++ [[https://www.linkedin.com/in/mark-hartigan-63458516b/][LinkedIn]]
++ [[https://www.youtube.com/channel/UCFFk4atAx90vu-Hx4HxNZ6w][YouTube]]
++ [[https://engineering.purdue.edu/CubeSat/missions/femta][FEMTA Suborbital Experiment]] -- my research lab
++ [[https://bitwise-a3c2d.web.app][Bitwise]] -- a social media platform I helped make
