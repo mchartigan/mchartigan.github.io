@@ -4,8 +4,13 @@ body {
     margin-right: 25%;
 }
 
+/* format p elements */
 p {
     margin-left: 2em;
+}
+
+#postamble p {
+    text-align: center;
 }
 
 ol {
