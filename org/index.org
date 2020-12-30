@@ -1,8 +1,14 @@
 #+title: Mark Hartigan
 #+author: Mark Hartigan
 #+email: hartigan@purdue.edu
-#+date: December 28, 2020
 #+options: toc:nil num:nil
+#+options: html-link-use-abs-url:nil html-postamble:auto
+#+options: html-preamble:t html-scripts:t html-style:t
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
 #+html_link_home: index.html
 #+html_link_up:
 #+html_mathjax:
@@ -15,9 +21,20 @@
 
 * Welcome to my site.
 
-I don't have much to offer yet.
+I'm a senior at Purdue University studying aerospace engineering and minoring in computer science.
 
-Please accept [[file:docs/cv.pdf][my CV]] as an offering.
+In the process of applying to graduate programs to study  autonomy and control for space applications.
+
+Here's  [[file:ref/cv.pdf][my CV]].
+
+Many of my projects are on my [[https://github.com/mchartigan][Github page]]; you can also find me on [[https://www.linkedin.com/in/mark-hartigan-63458516b/][LinkedIn]].
+
+* Current projects.
+
+In order of priority:
+1) Getting a functioning website
+2) Creating a miniature web-based live LaTeX editor ([[https://github.com/mchartigan/LiveTeX][LiveTex]])
+3) Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Walkman]] platform
 
 ----------
 
