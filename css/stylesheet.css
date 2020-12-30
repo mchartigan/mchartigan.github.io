@@ -21,13 +21,14 @@ body {
     margin-right: 25%;
     margin-top: 1%;
     margin-bottom: 1%;
-    height: 98%;
+    min-height: 98%;
 
     color: white;
     background-color: rgba(0, 0, 0, 0);
     font-family: "Ubuntu Mono", monospace;
 
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Invert horizontal break */
@@ -49,8 +50,8 @@ a:visited { color: plum; text-decoration: none; }
 a:active  { color: lightcoral; text-decoration: none; } 
 
 #postamble {
-    position: absolute;
-    bottom: 8px;
+    margin-top: auto;
+    margin-bottom: 8px;
     width: 100%;
 }
 #postamble p { text-align: center; }
