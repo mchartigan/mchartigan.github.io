@@ -34,4 +34,4 @@ See a list of my [[file:projects.html][current and past projects]]
 * Blog
 
 + 2021.01.01: [[file:blog/20210101.html][New Year, New Website]]
-+ 2020.10.15: [[file:blog/20201015.html][Installing Arch]]
++ 2020.10.15: [[file:blog/20201015.html][How to Install Arch]]
