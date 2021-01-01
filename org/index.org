@@ -41,4 +41,4 @@ Past:
 
 * Blog
 
-+ 2021.01.01: [[file:blog/20200101.html][New Year, New Website]]
++ 2021.01.01: [[file:blog/20210101.html][New Year, New Website]]
