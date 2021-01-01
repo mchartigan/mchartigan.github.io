@@ -41,7 +41,7 @@ html {
   }
   
   /* indent plain text instead of being in-line */
-  p, li { margin-left: 4em; }
+  p, li { margin-left: 2em; }
   /* revert if p is inside li */
   li p {margin-left: 0em; }
   
