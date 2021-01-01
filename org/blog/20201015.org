@@ -1,0 +1,84 @@
+#+title: How to Install Arch
+#+author: Mark Hartigan
+#+email: hartigan@purdue.edu
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+#+options: toc:nil num:nil
+#+options: html-link-use-abs-url:nil html-postamble:t
+#+options: html-preamble:t html-scripts:t html-style:nil
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home: ../index.html
+#+html_link_up: ../index.html
+#+html_mathjax:
+#+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
+#+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+#+html_head: <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+#+html_head: <link rel="icon" type="image/png" href="ref/favicon.png" />
+#+subtitle:
+#+infojs_opt:
+#+latex_header:
+
+* October 15th, 2020 (posted on January 1st, 2021)
+
+[NOTE] this guide has only been verified on a virtual machine, YMMV
+ 
+1. go through [[https://wiki.archlinux.org/index.php/installation_guide][normal setup]] until chrooted  
+
+   #+begin_src shell
+   pacman -S dhcpcd dhcp dnsmasq base-devel emacs grub efibootmgr netctl
+   #+end_src
+
+2. Continue until bootloader
+
+3. Install =grub=
+
+4. Reboot
+
+5. Set up networking
+
+   #+begin_src shell
+   systemctl enable dhcpcd.service
+   systemctl enable systemd-resolved --now
+   ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+   #+end_src
+
+6. Add a new user
+
+   #+begin_src shell
+   useradd -m <user>
+   passwd <user>
+   usermod --append --groups wheel <user>
+   export EDITOR=/usr/bin/emacs
+   visudo
+   #+end_src
+
+   Find the wheel group in the *User Privilege Specification* section and uncomment so it looks like this:
+
+   #+begin_src shell
+   ## Uncomment to allow members of group wheel to execute any command
+   %wheel ALL=(ALL) ALL
+   #+end_src
+
+7. Set up a Desktop Environment (XFCE)
+
+   #+begin_src shell   
+   pacman -S xfce4 xfce4-goodies xorg-server
+   ##Ensure you're logged in as a user, not root
+   echo exec startxfce4 >> ~/.xinitrc
+   #+end_src
+
+8. Automatically boot into desktop
+
+   Edit =~/.bash_profile= and append the following to the end:
+   #+begin_src shell
+   if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+     exec startx
+   fi
+   #+end_src
+
+9. Reboot
+
+Congrats! Enjoy your Arch installation!!

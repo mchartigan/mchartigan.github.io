@@ -1,4 +1,4 @@
-#+title: Mark Hartigan
+#+title: Projects
 #+author: Mark Hartigan
 #+email: hartigan@purdue.edu
 #+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
@@ -11,7 +11,7 @@
 #+description:
 #+keywords:
 #+html_link_home: index.html
-#+html_link_up:
+#+html_link_up: index.html
 #+html_mathjax:
 #+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
 #+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
@@ -21,17 +21,10 @@
 #+infojs_opt:
 #+latex_header:
 
-* Welcome to my site
+* TODO Current
++ Creating a miniature web-based live LaTeX editor ([[https://github.com/mchartigan/LiveTeX][LiveTex]])
++ Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Pi-Walkman]] platform
 
-I'm a senior at Purdue University studying aerospace engineering and minoring in computer science; currently applying to graduate programs to study autonomy and control for space applications
-
-Here's [[file:ref/cv.pdf][my CV]]
-
-Find me on [[file:links.html][the internet]]
-
-See a list of my [[file:projects.html][current and past projects]]
-
-* Blog
-
-+ 2021.01.01: [[file:blog/20210101.html][New Year, New Website]]
-+ 2020.10.15: [[file:blog/20201015.html][Installing Arch]]
+* DONE Past
++ [2020 WINTER] Create a functioning website (this one)
++ [2020 FALL] [[https://bitwise-a3c2d.web.app/][Bitwise]] - A retro-themed social media platform made for CS 307
