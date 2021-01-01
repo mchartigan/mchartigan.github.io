@@ -1,0 +1,44 @@
+#+title: New Year, New Website
+#+author: Mark Hartigan
+#+email: hartigan@purdue.edu
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+#+options: toc:nil num:nil
+#+options: html-link-use-abs-url:nil html-postamble:t
+#+options: html-preamble:t html-scripts:t html-style:nil
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home: ../index.html
+#+html_link_up: ../index.html
+#+html_mathjax:
+#+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
+#+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+#+html_head: <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+#+html_head: <link rel="icon" type="image/png" href="../ref/favicon.png" />
+#+subtitle:
+#+infojs_opt:
+#+latex_header:
+
+* January 1st, 2021
+
+2020 was definitely a year for the history books: socially, politically, racially, environmentally, you name it.  But now's not the time for a retrospective -- all the issues of 2020 will still pursue us well into the new year and beyond. Rather, this post will be focusing on the insular world of my winter break before my last semester of college. Going in, I made several goals:
+
+- Complete my graduate school applications
+- Email all the professors at said schools to express interest in their labs
+- Set up my personal website
+- Run more (at least 5 days a week)
+- Complete a few more personal projects
+
+My last semester was plagued by graduate applications: letters of recommendation, essays, the GRE, etc. However, today I finally submitted my application to the University of Illinois and thus completed that stage of the process. As of today I've emailed all the professors I am interested in working with (save the ones from U of I) and the responses are starting to trickle in. I've been running more the past couple weeks as well, generally 5 days a week at an average of 5 miles a day. Progress has also been made on LiveTex, a snappy little LaTeX viewing web app I want to make to remove the wasted time of rendering full LaTeX documents. This comes at the cost of full functionality, but the intent is only to make neat equations with it. Regardless, this post isn't about LaTeX, my running habits, or my post-baccalaureate plans.
+
+The last goal I have yet to review is creating my personal website. I credit my friend [[https://starmaid.github.io/][Nick Masso]] for spurring me to make my own website after seeing theirs and learning about Github's free hosting service through [[https://pages.github.com/][Github Pages]]. The official guide suggests using Jekyll, a markdown-to-HTML compiler to create your site, but I have an inane fascination for making things harder for myself. Spurred by my ambiguous desire to "use emacs more", I decided to use emac's org-mode to create this site. Org, in addition to markdown capabilities and an absurd amount of other features, has the ability to publish *.org files to static HTML pages. I followed [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][this guide]] to create a project and publish it; I've also been writing my own CSS.
+
+During the course of  making [[https://bitwise-a3c2d.web.app/][Bitwise]], we gave very little consideration to the raw CSS that went into the site. Through the use of libraries such as React.js and Semantic UI, the CSS was abstracted away from us. This was for the best, since it would've been fiendishly complex to write and frankly, we didn't have the time. However, now that I'm writing my own static site where the DOM's most complicated element is a list, writing the CSS has been relaxed and rewarding. Really makes me feel like I'm in the early 2000s.
+
+From the first inception of this website, it's been a given that it'll be white monospace font on a black background. I toyed with the idea of using a starry night sky as the background, but the realistic shots didn't fit somehow. It was at this point I remembered a conversation with [[https://nickymarino.com/][Nicky Marino]], a friend and programmer discussing his project [[https://github.com/nickymarino/virgo][Virgo]] a year or so ago. Virgo is a Ruby CLI he wrote to generate starry backgrounds reminiscent of the Virgo A galaxy. With his permission, I used this to generate the site background you see now.
+
+Overall, I've had a fun few days learning org-mode and CSS more, as well as customizing my own brand. I think the site turned out very well and I'm pleased with its current state. Expect more updates as my life progresses and I complete projects though -- maybe I'll add an RSS feed or something. For now, I'll turn my attention to the few other projects I have set aside before I resume school on January 19th.
+
+Sent from my iPhone

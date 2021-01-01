@@ -29,9 +29,16 @@ Here's [[file:ref/cv.pdf][my CV]]
 
 Find me on [[file:links.html][the internet]]
 
-* Current projects
+* Projects
 
-In order of priority:
-1) Getting a functioning website
-2) Creating a miniature web-based live LaTeX editor ([[https://github.com/mchartigan/LiveTeX][LiveTex]])
-3) Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Pi-Walkman]] platform
+Current:
++ Creating a miniature web-based live LaTeX editor ([[https://github.com/mchartigan/LiveTeX][LiveTex]])
++ Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Pi-Walkman]] platform
+
+Past:
++ [2020 WINTER] Create a functioning website (this one)
++ [2020 FALL] [[https://bitwise-a3c2d.web.app/][Bitwise]] - A retro-themed social media platform made for CS 307
+
+* Blog
+
++ 2021.01.01: [[file:blog/20200101.html][New Year, New Website]]
