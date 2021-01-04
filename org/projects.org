@@ -22,9 +22,9 @@
 #+latex_header:
 
 * TODO Current
-+ Creating a miniature web-based live LaTeX editor ([[https://github.com/mchartigan/LiveTeX][LiveTex]])
 + Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Pi-Walkman]] platform
 
 * DONE Past
++ [2020 WINTER] [[https://mchartigan.github.io/LiveTeX][LiveTeX]] - A small but snappy live equation editor
 + [2020 WINTER] Create a functioning website (this one)
 + [2020 FALL] [[https://bitwise-a3c2d.web.app/][Bitwise]] - A retro-themed social media platform made for CS 307

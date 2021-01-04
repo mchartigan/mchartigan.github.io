@@ -1,0 +1,35 @@
+#+title: Research
+#+author: Mark Hartigan
+#+email: hartigan@purdue.edu
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+#+options: toc:nil num:nil
+#+options: html-link-use-abs-url:nil html-postamble:t
+#+options: html-preamble:t html-scripts:t html-style:nil
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home: index.html
+#+html_link_up: index.html
+#+html_mathjax:
+#+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
+#+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+#+html_head: <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+#+html_head: <link rel="icon" type="image/png" href="ref/favicon.png" />
+#+subtitle:
+#+infojs_opt:
+#+latex_header:
+
+* Lab: [[https://engineering.purdue.edu/CubeSat/missions/femta][FEMTA Suborbital Experiment]]
+
+I'm currently project manager for spring 2020; I've been an undergraduate researcher here since Fall 2019
+
+Our [[https://github.com/Noah-Franks/FEMTA][Github]] is publicly viewable
+
+Conference Presentations:
++ Lumpp, B., Ayhan, D., Deperna, J., *Hartigan, M.*, Hawn, E., Johnson, A., Kinsella, J., Kracke-Bock, C., Patel, J., (2020). "Zero-Gravity Testing of a FEMTA Thruster Through Plasma Spectroscopy". In /Fall 2020 Purdue Undergraduate Research Conference/. West Lafayette, IN.
++ Lumpp, B., Chow, J., Deperna, J., *Hartigan, M.*, Johnson, A., Kinsella, J., (2020). "Developing a Numerical Model of the FEMTA Propellant Management Experiment". In /Fall 2020 Purdue Undergraduate Research Conference/. West Lafayette, IN.
++ Lumpp, B., Cavanaugh, B., Degener, M., Deperna, J., Govindhan, A., *Hartigan, M.*, Menon, A., Park, J., Patel, J., (2020). "Optimizing, Testing, and Manufacturing the FEMTA Propellant Management System Design". In /Fall 2020 Purdue Undergraduate Research Conference/. West Lafayette, IN.
++ Chow, J., Czech, C., Degener, M., Franks, .N, Govindhan, A., *Hartigan, M.*, Kiddy, S., Kracke-Bock, C., Lumpp, A., Lumpp, B., Menon, A., Patel, R., Shahin, T., Soberg, J., Yu, Y., (2020). "Suborbital Testing of a Small Satellite Propulsion System". In /Spring 2020 Purdue Undergraduate Research Conference/. West Lafayette, IN.
+
