@@ -17,6 +17,7 @@
 #+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 #+html_head: <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 #+html_head: <link rel="icon" type="image/png" href="ref/favicon.png" />
+#+html_head: <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 #+subtitle:
 #+infojs_opt:
 #+latex_header:
