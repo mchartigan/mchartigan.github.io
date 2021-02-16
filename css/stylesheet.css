@@ -44,7 +44,13 @@ hr {
 p, li { margin-left: 2em; }
 /* revert if p is inside li */
 li p {margin-left: 0em; }
-  
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}  
   
 /* hyperlink formatting */
 a:link    { color: lightblue; text-decoration: none; }

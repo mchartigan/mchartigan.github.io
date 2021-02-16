@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-16 Tue 16:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Turning My Keyboard Into a Synth</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mark Hartigan" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/png" href="../ref/favicon.png" />
+<script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Turning My Keyboard Into a Synth</h1>
+
+<div id="outline-container-orgeac3d38" class="outline-2">
+<h2 id="orgeac3d38">February 16, 2021</h2>
+<div class="outline-text-2" id="text-orgeac3d38">
+<p>
+It's getting into the 5th week of my last semester at Purdue now, and you know what that means &#x2013; time to take way longer than I should to finish a project. Credit to <a href="https://starmaid.github.io/">Nicky Masso</a> for this idea.
+</p>
+
+<p>
+The basic concept is that I hate firing up Ableton if I only want to practice piano and not mess around with different sounds. The audio driver I use, <a href="https://www.asio4all.org/">ASIO4ALL</a>, gives me lower latency than DirectX but takes over my computer and breaks any other audio streaming service like Spotify or Youtube in the process; it's also slow to launch, requires me to take my laptop along if I want to bring my keyboard somewhere, and honestly has <i>too</i> many options. I don't wanna have to think about settings sometimes!
+</p>
+
+<p>
+The obvious solution is getting a real synth rather than a MIDI keyboard, but those are expensive and I value my time very little. My solution is relatively simple: install a DAW on a Raspberry Pi, then have it launch on boot (without a monitor attached) and load a predefined template for the MIDI input. That way I can just plug my keyboard into the Pi, power it on, plug my headphones in, and start playing &#x2013; no interfaces to speak of. 
+</p>
+
+
+<div class="figure">
+<p><img src="./../ref/sunvox_orthographic.jpg" alt="sunvox_orthographic.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>A close-up of the final product</p>
+</div>
+
+<p>
+To properly allow for headless use of my keyboard, I would need a DAW (Digital Audio Workstation) to interpret the MIDI instructions coming from my keyboard and convert them to audio. My choice here was <a href="https://www.warmplace.ru/soft/sunvox/">SunVox</a>, primarily for its support of the Raspberry Pi 3B+'s ARMv8 processor (SunVox's retro style and 16-bit synths are also just very pleasing). I configured a simple setup that would work for me comprised of an Audio Generator module piped through reverb and compressor modules before being output.
+</p>
+
+
+<div class="figure">
+<p><img src="./../ref/sunvox_gui.png" alt="sunvox_gui.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>My SunVox configuration in their GUI</p>
+</div>
+
+<p>
+I bound the spare keys on my keyboard to functions like volume and switching synth waveform so I could make some on-the-fly changes without booting into the GUI. I then saved this project and set it as the default template with autorecover session enabled, such that it wouldn't require any buttons to be clicked on boot &#x2013; this is critical for the next step.
+</p>
+
+<p>
+Next, I made SunVox launch on boot of the Pi. Now by default, the pi logs into a tty session when set to login on boot; however, what I want to do is launch an application with a GUI. In order to do this, I first need to start X, or the desktop session, then launch the application. It turns out that after much experimentation, this setup is relatively trivial to accomplish.
+</p>
+
+<p>
+The basic process is as follows (I may be missing some steps I took here):
+</p>
+
+<ol class="org-ol">
+<li><p>
+Install <code>tmux</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install -y tmux
+</pre>
+</div></li>
+
+<li>Create a shell script somewhere that will be run on boot &#x2013; mine is at <code>~/sunvox/startup.sh</code>.</li>
+
+<li><p>
+Populate the file with the following:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">#!/bin/bash
+
+startx
+tmux new-session -d -s sunvox '/&lt;full&gt;/&lt;path&gt;/&lt;to&gt;/sunvox_lofi'
+</pre>
+</div></li>
+
+<li><p>
+Append the following to the end of <code>/etc/rc.local</code> just before <code>exit 0</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo ./&lt;full&gt;/&lt;path&gt;/&lt;to&gt;/startup.sh &amp;
+</pre>
+</div></li>
+</ol>
+
+<p>
+Now, when you start up your Pi it should start X and launch SunVox (YMMV). I also went ahead made the Pi <a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md">broadcast its own Wi-Fi</a> to allow connection from anywhere and added a clean shutdown service using the GPIO pins (see <a href="https://github.com/adafruit/Adafruit-GPIO-Halt">Adafruit's GPIO Halt repo</a>).
+</p>
+
+<p>
+I'll leave you with a final shot of the setup:
+</p>
+
+
+<div class="figure">
+<p><img src="./../ref/sunvox_setup.jpg" alt="sunvox_setup.jpg" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Everything all plugged in</p>
+</div>
+
+<p>
+Ciao
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mark Hartigan (<a href="mailto:hartigan@purdue.edu">hartigan@purdue.edu</a>)</p>
+<p class="modified">Last Modified: 2021-02-16 Tue 16:37</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="credit">Background created using <a href="https://github.com/nickymarino/virgo">Virgo</a></p>
+</div>
+</body>
+</html>

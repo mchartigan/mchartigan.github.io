@@ -1,0 +1,76 @@
+#+title: Turning My Keyboard Into a Synth
+#+author: Mark Hartigan
+#+email: hartigan@purdue.edu
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+#+options: toc:nil num:nil
+#+options: html-link-use-abs-url:nil html-postamble:t
+#+options: html-preamble:t html-scripts:t html-style:nil
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home: ../index.html
+#+html_link_up: ../index.html
+#+html_mathjax:
+#+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
+#+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+#+html_head: <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+#+html_head: <link rel="icon" type="image/png" href="../ref/favicon.png" />
+#+html_head: <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+#+subtitle:
+#+infojs_opt:
+#+latex_header:
+
+* February 16, 2021
+
+It's getting into the 5th week of my last semester at Purdue now, and you know what that means -- time to take way longer than I should to finish a project. Credit to [[https://starmaid.github.io/][Nicky Masso]] for this idea.
+
+The basic concept is that I hate firing up Ableton if I only want to practice piano and not mess around with different sounds. The audio driver I use, [[https://www.asio4all.org/][ASIO4ALL]], gives me lower latency than DirectX but takes over my computer and breaks any other audio streaming service like Spotify or Youtube in the process; it's also slow to launch, requires me to take my laptop along if I want to bring my keyboard somewhere, and honestly has /too/ many options. I don't wanna have to think about settings sometimes!
+
+The obvious solution is getting a real synth rather than a MIDI keyboard, but those are expensive and I value my time very little. My solution is relatively simple: install a DAW on a Raspberry Pi, then have it launch on boot (without a monitor attached) and load a predefined template for the MIDI input. That way I can just plug my keyboard into the Pi, power it on, plug my headphones in, and start playing -- no interfaces to speak of. 
+
+#+caption: A close-up of the final product
+[[./../ref/sunvox_orthographic.jpg]]
+
+To properly allow for headless use of my keyboard, I would need a DAW (Digital Audio Workstation) to interpret the MIDI instructions coming from my keyboard and convert them to audio. My choice here was [[https://www.warmplace.ru/soft/sunvox/][SunVox]], primarily for its support of the Raspberry Pi 3B+'s ARMv8 processor (SunVox's retro style and 16-bit synths are also just very pleasing). I configured a simple setup that would work for me comprised of an Audio Generator module piped through reverb and compressor modules before being output.
+
+#+caption: My SunVox configuration in their GUI
+[[./../ref/sunvox_gui.png]]
+
+I bound the spare keys on my keyboard to functions like volume and switching synth waveform so I could make some on-the-fly changes without booting into the GUI. I then saved this project and set it as the default template with autorecover session enabled, such that it wouldn't require any buttons to be clicked on boot -- this is critical for the next step.
+
+Next, I made SunVox launch on boot of the Pi. Now by default, the pi logs into a tty session when set to login on boot; however, what I want to do is launch an application with a GUI. In order to do this, I first need to start X, or the desktop session, then launch the application. It turns out that after much experimentation, this setup is relatively trivial to accomplish.
+
+The basic process is as follows (I may be missing some steps I took here):
+
+1. Install =tmux=
+
+   #+begin_src shell
+   sudo apt install -y tmux
+   #+end_src
+
+2. Create a shell script somewhere that will be run on boot -- mine is at =~/sunvox/startup.sh=.
+
+3. Populate the file with the following:
+   #+begin_src sh
+   #!/bin/bash
+
+   startx
+   tmux new-session -d -s sunvox '/<full>/<path>/<to>/sunvox_lofi'
+   #+end_src
+
+4. Append the following to the end of =/etc/rc.local= just before =exit 0=:
+
+   #+begin_src sh
+   sudo ./<full>/<path>/<to>/startup.sh &
+   #+end_src
+
+Now, when you start up your Pi it should start X and launch SunVox (YMMV). I also went ahead made the Pi [[https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md][broadcast its own Wi-Fi]] to allow connection from anywhere and added a clean shutdown service using the GPIO pins (see [[https://github.com/adafruit/Adafruit-GPIO-Halt][Adafruit's GPIO Halt repo]]).
+
+I'll leave you with a final shot of the setup:
+
+#+caption: Everything all plugged in
+[[./../ref/sunvox_setup.jpg]]
+
+Ciao
