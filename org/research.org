@@ -24,7 +24,7 @@
 
 * Vestigo Aerospace LLC: [[https://www.sbir.gov/node/1881753][Aerodynamically Stable DragSails for Spacecraft Deorbit]]
 
-I'm working for this company while at Purdue University during the summer of 2021. I primarily am programming the microcontroller to control drag sail deployment, timing, etc. (MSP430FR5969 if you're curious). This will be a device the end user can interface with over I2C, SPI, or UART
+I'm working for this company while at Purdue University during the summer of 2021. I primarily am programming the microcontroller to control drag sail deployment, timing, etc. ([[https://www.ti.com/product/MSP430FR5969][MSP430FR5969]] if you're curious). This will be a device the end user can interface with over I2C, SPI, or UART
 
 * Purdue University: [[https://engineering.purdue.edu/CubeSat/missions/femta][FEMTA Suborbital Flight Experiment]]
 
