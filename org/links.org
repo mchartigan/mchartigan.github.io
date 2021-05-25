@@ -27,5 +27,5 @@
 + [[https://github.com/mchartigan][Github]]
 + [[https://www.linkedin.com/in/mark-hartigan-63458516b/][LinkedIn]]
 + [[https://www.youtube.com/channel/UCFFk4atAx90vu-Hx4HxNZ6w][YouTube]]
-+ [[https://engineering.purdue.edu/CubeSat/missions/femta][FEMTA Suborbital Experiment]] -- my research lab
++ [[https://engineering.purdue.edu/CubeSat/missions/femta][FEMTA Suborbital Experiment]] -- my old research lab
 + [[https://bitwise-a3c2d.web.app][Bitwise]] -- a social media platform I helped make
