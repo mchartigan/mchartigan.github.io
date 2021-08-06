@@ -20,6 +20,9 @@
 
 * Masala Gravy Recipe
 
+#+caption: Swordfish Tikka Masala I made using this gravy
+[[./../ref/swordfish_masala.jpg]]
+
 Goes great over rice or with naan! Paneer and vegetables go well to keep the recipe vegetarian.
 
 I used these two recipes as a reference:
