@@ -1,4 +1,4 @@
-#+title: Masala Curry Recipe
+#+title: Masala Gravy Recipe
 #+author: Mark Hartigan
 #+email: mark.hartigan@protonmail.com
 #+options: toc:nil num:nil
@@ -18,7 +18,7 @@
 #+subtitle:
 #+latex_header:
 
-* Masala Curry Recipe
+* Masala Gravy Recipe
 
 Goes great over rice or with naan! Paneer and vegetables go well to keep the recipe vegetarian.
 
@@ -51,4 +51,4 @@ Mix all the spices (except the cinnamon and clove), brush out an opening in the 
 ** Blending
 Next, take the pan off the heat and pour in a little cold water to cool it down. Once cooled, pour into a blender and blend into a fine puree -- take care to make sure there's no lumps by tasting and stop blending once you're happy with the consistency. Add more water as necessary until the puree is only slightly thicker than the desired final product.
 ** Cooking part II
-Heat up a little more oil in the pan on medium heat and throw in the cinnamon and clove once it's hot. Cook only for a few seconds until they're aromatic. At this point, feel free to cook any vegetables or such you'd like to add into the curry. Next, pour the puree into the pan and cook until the oils within start to separate and the tomato flavor has mellowed out entirely. Once done, take off the heat and pour enough cream in to reach the desired consistency and flavor. Garnish with cilantro.
+Heat up a little more oil in the pan on medium heat and throw in the cinnamon and clove once it's hot. Cook only for a few seconds until they're aromatic. At this point, feel free to cook any vegetables or such you'd like to add into the gravy. Next, pour the puree into the pan and cook until the oils within start to separate and the tomato flavor has mellowed out entirely. Once done, take off the heat and pour enough cream in to reach the desired consistency and flavor. Garnish with cilantro.

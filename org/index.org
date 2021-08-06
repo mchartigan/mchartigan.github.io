@@ -33,7 +33,7 @@ Browse my [[file:research.html][current research]]
 
 * Blog
 
-+ 2021.08.05: [[file:blog/20210805.html][Masala Curry Recipe]]
++ 2021.08.05: [[file:blog/20210805.html][Masala Gravy Recipe]]
 + 2021.02.16: [[file:blog/20210216.html][Turning My Keyboard Into a Synth]]
 + 2021.01.01: [[file:blog/20210101.html][New Year, New Website]]
 + 2020.10.15: [[file:blog/20201015.html][How to Install Arch]]
