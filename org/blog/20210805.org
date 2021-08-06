@@ -18,7 +18,7 @@
 #+subtitle:
 #+latex_header:
 
-* Masala Gravy Recipe
+* August 8, 2021
 
 #+caption: Swordfish Tikka Masala I made using this gravy
 [[./../ref/swordfish_masala.jpg]]
