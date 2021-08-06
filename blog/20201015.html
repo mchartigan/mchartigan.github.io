@@ -3,62 +3,38 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-25 Tue 00:12 -->
+<!-- 2021-08-05 Thu 20:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to Install Arch</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Mark Hartigan" />
+<meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 <link rel="icon" type="image/png" href="ref/favicon.png" />
 <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -69,9 +45,10 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">How to Install Arch</h1>
 
-<div id="outline-container-orgef63627" class="outline-2">
-<h2 id="orgef63627">October 15th, 2020 (posted on January 1st, 2021)</h2>
-<div class="outline-text-2" id="text-orgef63627">
+
+<div id="outline-container-org66d2939" class="outline-2">
+<h2 id="org66d2939">October 15th, 2020 (posted on January 1st, 2021)</h2>
+<div class="outline-text-2" id="text-org66d2939">
 <p>
 [NOTE] this guide has only been verified on a virtual machine, YMMV
 </p>
@@ -82,7 +59,7 @@ go through <a href="https://wiki.archlinux.org/index.php/installation_guide">nor
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">pacman -S dhcpcd dhcp dnsmasq base-devel emacs grub efibootmgr netctl
+<pre class="src src-shell">   pacman -S dhcpcd dhcp dnsmasq base-devel emacs grub efibootmgr netctl
 </pre>
 </div></li>
 
@@ -97,9 +74,9 @@ Set up networking
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">systemctl enable dhcpcd.service
-systemctl enable systemd-resolved --now
-ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+<pre class="src src-shell">   systemctl enable dhcpcd.service
+   systemctl enable systemd-resolved --now
+   <span style="color: #21bfc2;">ln</span> -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 </pre>
 </div></li>
 
@@ -108,11 +85,11 @@ Add a new user
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">useradd -m &lt;user&gt;
-passwd &lt;user&gt;
-usermod --append --groups wheel &lt;user&gt;
-export EDITOR=/usr/bin/emacs
-visudo
+<pre class="src src-shell">   useradd -m &lt;user&gt;
+   passwd &lt;user&gt;
+   usermod --append --groups wheel &lt;user&gt;
+   <span style="color: #b877db;">export</span> <span style="color: #e95678;">EDITOR</span>=/usr/bin/emacs
+   visudo
 </pre>
 </div>
 
@@ -121,8 +98,8 @@ Find the wheel group in the <b>User Privilege Specification</b> section and unco
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">## Uncomment to allow members of group wheel to execute any command
-%wheel ALL=(ALL) ALL
+<pre class="src src-shell">   <span style="color: #4e5059;">## </span><span style="color: #4e5059;">Uncomment to allow members of group wheel to execute any command</span>
+   %wheel <span style="color: #e95678;">ALL</span>=<span style="color: #21bfc2;">(</span>ALL<span style="color: #21bfc2;">)</span> ALL
 </pre>
 </div></li>
 
@@ -131,9 +108,9 @@ Set up a Desktop Environment (XFCE)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">pacman -S xfce4 xfce4-goodies xorg-server
-##Ensure you're logged in as a user, not root
-echo exec startxfce4 &gt;&gt; ~/.xinitrc
+<pre class="src src-shell">   pacman -S xfce4 xfce4-goodies xorg-server
+   <span style="color: #4e5059;">##</span><span style="color: #4e5059;">Ensure you're logged in as a user, not root</span>
+   <span style="color: #21bfc2;">echo</span> exec startxfce4 &gt;&gt; ~/.xinitrc
 </pre>
 </div></li>
 
@@ -145,9 +122,9 @@ Automatically boot into desktop
 Edit <code>~/.bash_profile</code> and append the following to the end:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">if [[ ! $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
+<pre class="src src-shell">   <span style="color: #b877db;">if</span> <span style="color: #21bfc2;">[</span><span style="color: #6c6f93;">[</span> <span style="color: #21bfc2; font-weight: bold;">!</span> $<span style="color: #e95678;">DISPLAY</span> &amp;&amp; $<span style="color: #e95678;">XDG_VTNR</span> -eq <span style="color: #f09383; font-weight: bold;">1</span> <span style="color: #6c6f93;">]</span><span style="color: #21bfc2;">]</span>; <span style="color: #b877db;">then</span>
+     <span style="color: #b877db;">exec</span> startx
+   <span style="color: #b877db;">fi</span>
 </pre>
 </div></li>
 
@@ -161,10 +138,7 @@ Congrats! Enjoy your Arch installation!!
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Mark Hartigan (<a href="mailto:m.hartigan.c@gmail.com">m.hartigan.c@gmail.com</a>)</p>
-<p class="modified">Last Modified: 2021-05-25 Tue 00:12</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
-<p class="credit">Background created using <a href="https://github.com/nickymarino/virgo">Virgo</a></p>
+<p class="postamble">Author: Mark Hartigan (<a href="mailto:mark.hartigan@protonmail.com">mark.hartigan@protonmail.com</a>)<br>Last Modified: 2021-08-05 Thu 20:52<br><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.5)<br>Background created using <a href=https://github.com/nickymarino/virgo>Virgo</a></p>
 </div>
 </body>
 </html>

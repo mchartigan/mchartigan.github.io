@@ -3,84 +3,60 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-25 Tue 00:12 -->
+<!-- 2021-08-05 Thu 20:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Research</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Mark Hartigan" />
+<meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 <link rel="icon" type="image/png" href="ref/favicon.png" />
 <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
 <div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
+ <a accesskey="h" href=""> UP </a>
  |
  <a accesskey="H" href="index.html"> HOME </a>
 </div><div id="content">
 <h1 class="title">Research</h1>
 
-<div id="outline-container-orgdcff3ff" class="outline-2">
-<h2 id="orgdcff3ff">Vestigo Aerospace LLC: <a href="https://www.sbir.gov/node/1881753">Aerodynamically Stable DragSails for Spacecraft Deorbit</a></h2>
-<div class="outline-text-2" id="text-orgdcff3ff">
+<div id="outline-container-org4c2ea79" class="outline-2">
+<h2 id="org4c2ea79">Vestigo Aerospace LLC: <a href="https://www.sbir.gov/node/1881753">Aerodynamically Stable DragSails for Spacecraft Deorbit</a></h2>
+<div class="outline-text-2" id="text-org4c2ea79">
 <p>
-I'm working for this company while at Purdue University during the summer of 2021. I primarily am programming the microcontroller to control drag sail deployment, timing, etc. (<a href="https://www.ti.com/product/MSP430FR5969">MSP430FR5969</a> if you're curious). This will be a device the end user can interface with over I2C, SPI, or UART
+I worked for this company while at Purdue University during the summer of 2021. I primarily programmed the microcontroller to control drag sail deployment, timing, etc. (<a href="https://www.ti.com/product/MSP430FR5969">MSP430FR5969</a> if you&rsquo;re curious). This is a device the end user can interface with over I2C, SPI, or UART to control various parameters pertinent to the drag sail. I concluded my summer by presenting my work in a Code Design Review to the company and an expert on the subject matter.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1f929d1" class="outline-2">
-<h2 id="org1f929d1">Purdue University: <a href="https://engineering.purdue.edu/CubeSat/missions/femta">FEMTA Suborbital Flight Experiment</a></h2>
-<div class="outline-text-2" id="text-org1f929d1">
+<div id="outline-container-org0641a29" class="outline-2">
+<h2 id="org0641a29">Purdue University: <a href="https://engineering.purdue.edu/CubeSat/missions/femta">FEMTA Suborbital Flight Experiment</a></h2>
+<div class="outline-text-2" id="text-org0641a29">
 <p>
 I was project manager for spring 2021 and was an undergraduate researcher here since Fall 2019
 </p>
@@ -93,20 +69,17 @@ Our <a href="https://github.com/FEMTA-Suborbital-Experiment">Github</a> is publi
 Conference Presentations:
 </p>
 <ul class="org-ul">
-<li><b>Hartigan, M.</b>, Degener, M., (2021). "Using Plasma Spectroscopy to Measure Thrust of Micropropulsion Systems". In <i>Spring 2021 AAE Research Symposium Series</i>. West Lafayette, IN.</li>
-<li>Lumpp, B., Ayhan, D., Deperna, J., <b>Hartigan, M.</b>, Hawn, E., Johnson, A., Kinsella, J., Kracke-Bock, C., Patel, J., (2020). "Zero-Gravity Testing of a FEMTA Thruster Through Plasma Spectroscopy". In <i>Fall 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
-<li>Lumpp, B., Chow, J., Deperna, J., <b>Hartigan, M.</b>, Johnson, A., Kinsella, J., (2020). "Developing a Numerical Model of the FEMTA Propellant Management Experiment". In <i>Fall 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
-<li>Lumpp, B., Cavanaugh, B., Degener, M., Deperna, J., Govindhan, A., <b>Hartigan, M.</b>, Menon, A., Park, J., Patel, J., (2020). "Optimizing, Testing, and Manufacturing the FEMTA Propellant Management System Design". In <i>Fall 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
-<li>Chow, J., Czech, C., Degener, M., Franks, .N, Govindhan, A., <b>Hartigan, M.</b>, Kiddy, S., Kracke-Bock, C., Lumpp, A., Lumpp, B., Menon, A., Patel, R., Shahin, T., Soberg, J., Yu, Y., (2020). "Suborbital Testing of a Small Satellite Propulsion System". In <i>Spring 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
+<li><b>Hartigan, M.</b>, Degener, M., (2021). &ldquo;Using Plasma Spectroscopy to Measure Thrust of Micropropulsion Systems&rdquo;. In <i>Spring 2021 AAE Research Symposium Series</i>. West Lafayette, IN.</li>
+<li>Lumpp, B., Ayhan, D., Deperna, J., <b>Hartigan, M.</b>, Hawn, E., Johnson, A., Kinsella, J., Kracke-Bock, C., Patel, J., (2020). &ldquo;Zero-Gravity Testing of a FEMTA Thruster Through Plasma Spectroscopy&rdquo;. In <i>Fall 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
+<li>Lumpp, B., Chow, J., Deperna, J., <b>Hartigan, M.</b>, Johnson, A., Kinsella, J., (2020). &ldquo;Developing a Numerical Model of the FEMTA Propellant Management Experiment&rdquo;. In <i>Fall 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
+<li>Lumpp, B., Cavanaugh, B., Degener, M., Deperna, J., Govindhan, A., <b>Hartigan, M.</b>, Menon, A., Park, J., Patel, J., (2020). &ldquo;Optimizing, Testing, and Manufacturing the FEMTA Propellant Management System Design&rdquo;. In <i>Fall 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
+<li>Chow, J., Czech, C., Degener, M., Franks, .N, Govindhan, A., <b>Hartigan, M.</b>, Kiddy, S., Kracke-Bock, C., Lumpp, A., Lumpp, B., Menon, A., Patel, R., Shahin, T., Soberg, J., Yu, Y., (2020). &ldquo;Suborbital Testing of a Small Satellite Propulsion System&rdquo;. In <i>Spring 2020 Purdue Undergraduate Research Conference</i>. West Lafayette, IN.</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Mark Hartigan (<a href="mailto:m.hartigan.c@gmail.com">m.hartigan.c@gmail.com</a>)</p>
-<p class="modified">Last Modified: 2021-05-25 Tue 00:12</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
-<p class="credit">Background created using <a href="https://github.com/nickymarino/virgo">Virgo</a></p>
+<p class="postamble">Author: Mark Hartigan (<a href="mailto:mark.hartigan@protonmail.com">mark.hartigan@protonmail.com</a>)<br>Last Modified: 2021-08-05 Thu 20:53<br><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.5)<br>Background created using <a href=https://github.com/nickymarino/virgo>Virgo</a></p>
 </div>
 </body>
 </html>

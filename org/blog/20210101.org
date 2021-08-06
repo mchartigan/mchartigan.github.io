@@ -1,6 +1,6 @@
 #+title: New Year, New Website
 #+author: Mark Hartigan
-#+email: m.hartigan.c@gmail.com
+#+email: mark.hartigan@protonmail.com
 #+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
