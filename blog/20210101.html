@@ -3,62 +3,38 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-25 Tue 00:12 -->
+<!-- 2021-08-05 Thu 20:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>New Year, New Website</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Mark Hartigan" />
+<meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 <link rel="icon" type="image/png" href="../ref/favicon.png" />
 <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -69,11 +45,11 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">New Year, New Website</h1>
 
-<div id="outline-container-orgabda2a8" class="outline-2">
-<h2 id="orgabda2a8">January 1st, 2021</h2>
-<div class="outline-text-2" id="text-orgabda2a8">
+<div id="outline-container-org63cc370" class="outline-2">
+<h2 id="org63cc370">January 1st, 2021</h2>
+<div class="outline-text-2" id="text-org63cc370">
 <p>
-2020 was definitely a year for the history books: socially, politically, racially, environmentally, you name it.  But now's not the time for a retrospective &#x2013; all the issues of 2020 will still pursue us well into the new year and beyond. Rather, this post will be focusing on the insular world of my winter break before my last semester of college. Going in, I made several goals:
+2020 was definitely a year for the history books: socially, politically, racially, environmentally, you name it.  But now&rsquo;s not the time for a retrospective &#x2013; all the issues of 2020 will still pursue us well into the new year and beyond. Rather, this post will be focusing on the insular world of my winter break before my last semester of college. Going in, I made several goals:
 </p>
 
 <ul class="org-ul">
@@ -85,23 +61,23 @@ for the JavaScript code in this tag.
 </ul>
 
 <p>
-My last semester was plagued by graduate applications: letters of recommendation, essays, the GRE, etc. However, today I finally submitted my application to the University of Illinois and thus completed that stage of the process. As of today I've emailed all the professors I am interested in working with (save the ones from U of I) and the responses are starting to trickle in. I've been running more the past couple weeks as well, generally 5 days a week at an average of 5 miles a day. Progress has also been made on LiveTex, a snappy little LaTeX viewing web app I want to make to remove the wasted time of rendering full LaTeX documents. This comes at the cost of full functionality, but the intent is only to make neat equations with it. Regardless, this post isn't about LaTeX, my running habits, or my post-baccalaureate plans.
+My last semester was plagued by graduate applications: letters of recommendation, essays, the GRE, etc. However, today I finally submitted my application to the University of Illinois and thus completed that stage of the process. As of today I&rsquo;ve emailed all the professors I am interested in working with (save the ones from U of I) and the responses are starting to trickle in. I&rsquo;ve been running more the past couple weeks as well, generally 5 days a week at an average of 5 miles a day. Progress has also been made on LiveTex, a snappy little LaTeX viewing web app I want to make to remove the wasted time of rendering full LaTeX documents. This comes at the cost of full functionality, but the intent is only to make neat equations with it. Regardless, this post isn&rsquo;t about LaTeX, my running habits, or my post-baccalaureate plans.
 </p>
 
 <p>
-The last goal I have yet to review is creating my personal website. I credit my friend <a href="https://starmaid.github.io/">Nick Masso</a> for spurring me to make my own website after seeing theirs and learning about Github's free hosting service through <a href="https://pages.github.com/">Github Pages</a>. The official guide suggests using Jekyll, a markdown-to-HTML compiler to create your site, but I have an inane fascination for making things harder for myself. Spurred by my ambiguous desire to "use emacs more", I decided to use emac's org-mode to create this site. Org, in addition to markdown capabilities and an absurd amount of other features, has the ability to publish *.org files to static HTML pages. I followed <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">this guide</a> to create a project and publish it; I've also been writing my own CSS.
+The last goal I have yet to review is creating my personal website. I credit my friend <a href="https://starmaid.github.io/">Nick Masso</a> for spurring me to make my own website after seeing theirs and learning about Github&rsquo;s free hosting service through <a href="https://pages.github.com/">Github Pages</a>. The official guide suggests using Jekyll, a markdown-to-HTML compiler to create your site, but I have an inane fascination for making things harder for myself. Spurred by my ambiguous desire to &ldquo;use emacs more&rdquo;, I decided to use emac&rsquo;s org-mode to create this site. Org, in addition to markdown capabilities and an absurd amount of other features, has the ability to publish *.org files to static HTML pages. I followed <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">this guide</a> to create a project and publish it; I&rsquo;ve also been writing my own CSS.
 </p>
 
 <p>
-During the course of  making <a href="https://bitwise-a3c2d.web.app/">Bitwise</a>, we gave very little consideration to the raw CSS that went into the site. Through the use of libraries such as React.js and Semantic UI, the CSS was abstracted away from us. This was for the best, since it would've been fiendishly complex to write and frankly, we didn't have the time. However, now that I'm writing my own static site where the DOM's most complicated element is a list, writing the CSS has been relaxed and rewarding. Really makes me feel like I'm in the early 2000s.
+During the course of  making <a href="https://bitwise-a3c2d.web.app/">Bitwise</a>, we gave very little consideration to the raw CSS that went into the site. Through the use of libraries such as React.js and Semantic UI, the CSS was abstracted away from us. This was for the best, since it would&rsquo;ve been fiendishly complex to write and frankly, we didn&rsquo;t have the time. However, now that I&rsquo;m writing my own static site where the DOM&rsquo;s most complicated element is a list, writing the CSS has been relaxed and rewarding. Really makes me feel like I&rsquo;m in the early 2000s.
 </p>
 
 <p>
-From the first inception of this website, it's been a given that it'll be white monospace font on a black background. I toyed with the idea of using a starry night sky as the background, but the realistic shots didn't fit somehow. It was at this point I remembered a conversation with <a href="https://nickymarino.com/">Nicky Marino</a>, a friend and programmer discussing his project <a href="https://github.com/nickymarino/virgo">Virgo</a> a year or so ago. Virgo is a Ruby CLI he wrote to generate starry backgrounds reminiscent of the Virgo A galaxy. With his permission, I used this to generate the site background you see now.
+From the first inception of this website, it&rsquo;s been a given that it&rsquo;ll be white monospace font on a black background. I toyed with the idea of using a starry night sky as the background, but the realistic shots didn&rsquo;t fit somehow. It was at this point I remembered a conversation with <a href="https://nickymarino.com/">Nicky Marino</a>, a friend and programmer discussing his project <a href="https://github.com/nickymarino/virgo">Virgo</a> a year or so ago. Virgo is a Ruby CLI he wrote to generate starry backgrounds reminiscent of the Virgo A galaxy. With his permission, I used this to generate the site background you see now.
 </p>
 
 <p>
-Overall, I've had a fun few days learning org-mode and CSS more, as well as customizing my own brand. I think the site turned out very well and I'm pleased with its current state. Expect more updates as my life progresses and I complete projects though &#x2013; maybe I'll add an RSS feed or something. For now, I'll turn my attention to the few other projects I have set aside before I resume school on January 19th.
+Overall, I&rsquo;ve had a fun few days learning org-mode and CSS more, as well as customizing my own brand. I think the site turned out very well and I&rsquo;m pleased with its current state. Expect more updates as my life progresses and I complete projects though &#x2013; maybe I&rsquo;ll add an RSS feed or something. For now, I&rsquo;ll turn my attention to the few other projects I have set aside before I resume school on January 19th.
 </p>
 
 <p>
@@ -111,10 +87,7 @@ Sent from my iPhone
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Mark Hartigan (<a href="mailto:m.hartigan.c@gmail.com">m.hartigan.c@gmail.com</a>)</p>
-<p class="modified">Last Modified: 2021-05-25 Tue 00:12</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
-<p class="credit">Background created using <a href="https://github.com/nickymarino/virgo">Virgo</a></p>
+<p class="postamble">Author: Mark Hartigan (<a href="mailto:mark.hartigan@protonmail.com">mark.hartigan@protonmail.com</a>)<br>Last Modified: 2021-08-05 Thu 20:48<br><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)<br>Background created using <a href=https://github.com/nickymarino/virgo>Virgo</a></p>
 </div>
 </body>
 </html>

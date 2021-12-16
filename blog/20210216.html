@@ -3,62 +3,38 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-25 Tue 00:12 -->
+<!-- 2021-08-05 Thu 20:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Turning My Keyboard Into a Synth</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Mark Hartigan" />
+<meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 <link rel="icon" type="image/png" href="../ref/favicon.png" />
 <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -69,15 +45,15 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">Turning My Keyboard Into a Synth</h1>
 
-<div id="outline-container-orgeac3d38" class="outline-2">
-<h2 id="orgeac3d38">February 16, 2021</h2>
-<div class="outline-text-2" id="text-orgeac3d38">
+<div id="outline-container-org3cbb26e" class="outline-2">
+<h2 id="org3cbb26e">February 16, 2021</h2>
+<div class="outline-text-2" id="text-org3cbb26e">
 <p>
-It's getting into the 5th week of my last semester at Purdue now, and you know what that means &#x2013; time to take way longer than I should to finish a project. Credit to <a href="https://starmaid.github.io/">Nicky Masso</a> for this idea.
+It&rsquo;s getting into the 5th week of my last semester at Purdue now, and you know what that means &#x2013; time to take way longer than I should to finish a project. Credit to <a href="https://starmaid.github.io/">Nicky Masso</a> for this idea.
 </p>
 
 <p>
-The basic concept is that I hate firing up Ableton if I only want to practice piano and not mess around with different sounds. The audio driver I use, <a href="https://www.asio4all.org/">ASIO4ALL</a>, gives me lower latency than DirectX but takes over my computer and breaks any other audio streaming service like Spotify or Youtube in the process; it's also slow to launch, requires me to take my laptop along if I want to bring my keyboard somewhere, and honestly has <i>too</i> many options. I don't wanna have to think about settings sometimes!
+The basic concept is that I hate firing up Ableton if I only want to practice piano and not mess around with different sounds. The audio driver I use, <a href="https://www.asio4all.org/">ASIO4ALL</a>, gives me lower latency than DirectX but takes over my computer and breaks any other audio streaming service like Spotify or Youtube in the process; it&rsquo;s also slow to launch, requires me to take my laptop along if I want to bring my keyboard somewhere, and honestly has <i>too</i> many options. I don&rsquo;t wanna have to think about settings sometimes!
 </p>
 
 <p>
@@ -85,25 +61,25 @@ The obvious solution is getting a real synth rather than a MIDI keyboard, but th
 </p>
 
 
-<div class="figure">
+<div id="org67629a3" class="figure">
 <p><img src="./../ref/sunvox_orthographic.jpg" alt="sunvox_orthographic.jpg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A close-up of the final product</p>
 </div>
 
 <p>
-To properly allow for headless use of my keyboard, I would need a DAW (Digital Audio Workstation) to interpret the MIDI instructions coming from my keyboard and convert them to audio. My choice here was <a href="https://www.warmplace.ru/soft/sunvox/">SunVox</a>, primarily for its support of the Raspberry Pi 3B+'s ARMv8 processor (SunVox's retro style and 16-bit synths are also just very pleasing). I configured a simple setup that would work for me comprised of an Audio Generator module piped through reverb and compressor modules before being output.
+To properly allow for headless use of my keyboard, I would need a DAW (Digital Audio Workstation) to interpret the MIDI instructions coming from my keyboard and convert them to audio. My choice here was <a href="https://www.warmplace.ru/soft/sunvox/">SunVox</a>, primarily for its support of the Raspberry Pi 3B+&rsquo;s ARMv8 processor (SunVox&rsquo;s retro style and 16-bit synths are also just very pleasing). I configured a simple setup that would work for me comprised of an Audio Generator module piped through reverb and compressor modules before being output.
 </p>
 
 
-<div class="figure">
+<div id="orga6e1c0d" class="figure">
 <p><img src="./../ref/sunvox_gui.png" alt="sunvox_gui.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>My SunVox configuration in their GUI</p>
 </div>
 
 <p>
-I bound the spare keys on my keyboard to functions like volume and switching synth waveform so I could make some on-the-fly changes without booting into the GUI. I then saved this project and set it as the default template with autorecover session enabled, such that it wouldn't require any buttons to be clicked on boot &#x2013; this is critical for the next step.
+I bound the spare keys on my keyboard to functions like volume and switching synth waveform so I could make some on-the-fly changes without booting into the GUI. I then saved this project and set it as the default template with autorecover session enabled, such that it wouldn&rsquo;t require any buttons to be clicked on boot &#x2013; this is critical for the next step.
 </p>
 
 <p>
@@ -120,7 +96,7 @@ Install <code>tmux</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell">sudo apt install -y tmux
+<pre class="src src-shell">   <span style="color: #21bfc2;">sudo</span> apt install -y tmux
 </pre>
 </div></li>
 
@@ -130,10 +106,10 @@ Install <code>tmux</code>
 Populate the file with the following:
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">#!/bin/bash
+<pre class="src src-sh">   <span style="color: #4e5059;">#</span><span style="color: #4e5059;">!/bin/bash</span>
 
-startx
-tmux new-session -d -s sunvox '/&lt;full&gt;/&lt;path&gt;/&lt;to&gt;/sunvox_lofi'
+   startx
+   tmux new-session -d -s sunvox <span style="color: #fab795;">'/&lt;full&gt;/&lt;path&gt;/&lt;to&gt;/sunvox_lofi'</span>
 </pre>
 </div></li>
 
@@ -142,21 +118,21 @@ Append the following to the end of <code>/etc/rc.local</code> just before <code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">sudo ./&lt;full&gt;/&lt;path&gt;/&lt;to&gt;/startup.sh &amp;
+<pre class="src src-sh">   <span style="color: #21bfc2;">sudo</span> ./&lt;full&gt;/&lt;path&gt;/&lt;to&gt;/startup.sh &amp;
 </pre>
 </div></li>
 </ol>
 
 <p>
-Now, when you start up your Pi it should start X and launch SunVox (YMMV). I also went ahead made the Pi <a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md">broadcast its own Wi-Fi</a> to allow connection from anywhere and added a clean shutdown service using the GPIO pins (see <a href="https://github.com/adafruit/Adafruit-GPIO-Halt">Adafruit's GPIO Halt repo</a>).
+Now, when you start up your Pi it should start X and launch SunVox (YMMV). I also went ahead made the Pi <a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md">broadcast its own Wi-Fi</a> to allow connection from anywhere and added a clean shutdown service using the GPIO pins (see <a href="https://github.com/adafruit/Adafruit-GPIO-Halt">Adafruit&rsquo;s GPIO Halt repo</a>).
 </p>
 
 <p>
-I'll leave you with a final shot of the setup:
+I&rsquo;ll leave you with a final shot of the setup:
 </p>
 
 
-<div class="figure">
+<div id="orgbd685a2" class="figure">
 <p><img src="./../ref/sunvox_setup.jpg" alt="sunvox_setup.jpg" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Everything all plugged in</p>
@@ -169,10 +145,7 @@ Ciao
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Mark Hartigan (<a href="mailto:m.hartigan.c@gmail.com">m.hartigan.c@gmail.com</a>)</p>
-<p class="modified">Last Modified: 2021-05-25 Tue 00:12</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
-<p class="credit">Background created using <a href="https://github.com/nickymarino/virgo">Virgo</a></p>
+<p class="postamble">Author: Mark Hartigan (<a href="mailto:mark.hartigan@protonmail.com">mark.hartigan@protonmail.com</a>)<br>Last Modified: 2021-08-05 Thu 20:48<br><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)<br>Background created using <a href=https://github.com/nickymarino/virgo>Virgo</a></p>
 </div>
 </body>
 </html>

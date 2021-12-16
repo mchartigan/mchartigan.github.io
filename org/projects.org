@@ -1,17 +1,14 @@
 #+title: Projects
 #+author: Mark Hartigan
-#+email: m.hartigan.c@gmail.com
-#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+#+email: mark.hartigan@protonmail.com
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
 #+options: html-preamble:t html-scripts:t html-style:nil
 #+options: html5-fancy:nil tex:t
-#+html_doctype: xhtml-strict
-#+html_container: div
 #+description:
 #+keywords:
 #+html_link_home: index.html
-#+html_link_up: index.html
+#+html_link_up:
 #+html_mathjax:
 #+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
 #+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
@@ -19,7 +16,6 @@
 #+html_head: <link rel="icon" type="image/png" href="ref/favicon.png" />
 #+html_head: <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 #+subtitle:
-#+infojs_opt:
 #+latex_header:
 
 * TODO Current
