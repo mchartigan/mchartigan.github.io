@@ -1,6 +1,7 @@
 #+title: Masala Gravy Recipe
 #+author: Mark Hartigan
 #+email: mark.hartigan@protonmail.com
+#+date: 2021 Aug 08
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
 #+options: html-preamble:t html-scripts:t html-style:nil
@@ -20,10 +21,10 @@
 
 * August 8, 2021
 
+Goes great over rice or with naan! Paneer and vegetables go well to keep the recipe vegetarian.
+
 #+caption: Swordfish Tikka Masala I made using this gravy
 [[./../ref/swordfish_masala.jpg]]
-
-Goes great over rice or with naan! Paneer and vegetables go well to keep the recipe vegetarian.
 
 I used these two recipes as a reference:
 + [[https://coconutcraze.wordpress.com/2013/07/24/malai-koftapaneer-and-vegetable-balls-in-spicy-curry/][Malai Kofta]]

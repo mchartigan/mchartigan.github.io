@@ -1,6 +1,7 @@
 #+title: How to Install Arch
 #+author: Mark Hartigan
 #+email: mark.hartigan@protonmail.com
+#+date: 2020 Oct 15
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
 #+options: html-preamble:t html-scripts:t html-style:nil

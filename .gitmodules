@@ -1,0 +1,3 @@
+[submodule "lib/.\\rfeed\\"]
+	path = lib/.\\rfeed\\
+	url = https://github.com/svpino/rfeed
