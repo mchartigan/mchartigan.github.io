@@ -45,6 +45,7 @@ feed = Feed(
     description = soup.find_all("p")[0].text.strip()
 )
 
+rss = feed.rss().replace("–", "--")     # replace hyphens with readable char
 # write RSS feed to feed.xml
 with open("feed.xml", "w") as file:
-    file.write(feed.rss())
+    file.write(rss)
