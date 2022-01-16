@@ -5,7 +5,7 @@ import os
 
 
 # Get all the HTML files in the blog section
-htmls = [x for x in os.listdir(os.getcwd() + "\\blog") if x.endswith('.html')]
+htmls = [x for x in os.listdir(os.getcwd() + "/blog") if x.endswith('.html')]
 htmls.sort(reverse=True) # sort newest to oldest
 
 items = []
