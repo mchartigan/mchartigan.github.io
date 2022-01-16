@@ -1,7 +1,7 @@
 #+title: Masala Gravy Recipe
 #+author: Mark Hartigan
 #+email: mark.hartigan@protonmail.com
-#+date: 2021 Aug 08
+#+date: 2022 Jan 14
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
 #+options: html-preamble:t html-scripts:t html-style:nil

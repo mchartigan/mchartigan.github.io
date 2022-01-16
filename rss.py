@@ -18,7 +18,7 @@ for path in htmls:
     name = soup.find("p", "author").text.strip("Author:").split(" (")[0]
     date = soup.find("p", "modified").text.strip("Last Modified: ")
     dt = datetime.strptime(date, "%Y %b %d")
-    url  = "https://mchartigan.github.io/" + path
+    url  = "https://mchartigan.github.io/blog/" + path
 
     items.append(Item(
         title = soup.title.string,
