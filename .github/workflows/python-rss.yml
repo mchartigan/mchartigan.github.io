@@ -25,6 +25,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install beautifulsoup4 datetime
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        cd lib
+        rm -r rfeed
+        git clone https://github.com/svpino/rfeed
+        cd ..
     - name: Run RSS builder
       run: |
         python rss.py
