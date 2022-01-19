@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-18 Tue 23:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Making an RSS Feed for a Static HTML Site</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mark Hartigan" />
+<meta name="description" content="Want to make an RSS feed for your Github Pages site or other static website in &lt;current year&gt;? Weird but ok, I'll show you how."
+ />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<link rel="icon" type="image/png" href="ref/favicon.png" />
+<script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Making an RSS Feed for a Static HTML Site</h1>
+
+<div id="outline-container-org286b1b1" class="outline-2">
+<h2 id="org286b1b1">January 18, 2022</h2>
+<div class="outline-text-2" id="text-org286b1b1">
+<p>
+So I've been writing posts for my site in Emacs 27 as a way to familiarize myself with the interface &#x2013; in the event I need to use a text editor, I don't want to be completely out of my depth. I've come to realize, however, that I don't know how to program in Lisp. This poses somewhat of an issue when Emacs uses Lisp for any and all scripting and configuration. And you know what? I don't have any interest in learning Lisp! I have yet to encounter any other use case for it to convince me to invest the time, so I've concluded that I have better things to do with my time. Unfortunately, this decision promptly bit me in the ass when I wanted to add an RSS feed to my personal site.
+</p>
+
+<p>
+I found <a href="https://ogbe.net/blog/blogging_with_org.html">this wonderful guide</a> from Dennis Ogbe on creating a single RSS <code>.xml</code> file using <code>ox-rss.el</code>, but the careful observer will note that the <code>.el</code> extension means it's written in Emacs Lisp. After messing around for a while and getting completely out of my depth, I determined to slink meekly back into my depth and write the same thing in Python.
+</p>
+</div>
+
+<div id="outline-container-orge937a7a" class="outline-3">
+<h3 id="orge937a7a">The Solution</h3>
+<div class="outline-text-3" id="text-orge937a7a">
+<div class="org-src-container">
+<pre class="src src-python">from bs4 import BeautifulSoup   # HTML parser
+from lib.rfeed.rfeed import *   # RSS generator
+from datetime import datetime
+import os
+
+
+# Get all the HTML files in the blog section
+htmls = [x for x in os.listdir(os.getcwd() + "/blog") if x.endswith('.html')]
+htmls.sort(reverse=True) # sort newest to oldest
+
+items = []
+
+# Generate an item for all blog posts. The description is the first paragraph.
+for path in htmls:
+    with open("blog/" + path) as file:
+	soup = BeautifulSoup(file, "html.parser")
+
+    name = soup.find("p", "author").text.strip("Author:").split(" (")[0]
+    date = soup.find("p", "modified").text.strip("Last Modified: ")
+    try:    # try to extract time as well as date from newer files
+	dt = datetime.strptime(date, "%Y %b %d %H:%M")
+    except:
+	dt = datetime.strptime(date, "%Y %b %d")
+    url  = "https://mchartigan.github.io/blog/" + path
+
+    items.append(Item(
+	title = soup.title.string,
+	link = url,
+	author = name,
+	guid = Guid(url),
+	pubDate = dt,
+	description = soup.find_all("p")[0].text.strip()
+    ))
+
+# Generate main channel item
+with open("index.html") as file:
+    soup = BeautifulSoup(file, "html.parser")
+
+date = soup.find("p", "modified").text.strip("Last Modified: ")
+try:    # try to extract time as well as date from newer files
+    dt = datetime.strptime(date, "%Y %b %d %H:%M")
+except:
+    dt = datetime.strptime(date, "%Y %b %d")
+
+feed = Feed(
+    title = soup.title.string,
+    link = "https://mchartigan.github.io/",
+    lastBuildDate = dt,
+    language = "en-US",
+    items = items,
+    description = soup.find_all("p")[0].text.strip()
+)
+
+rss = feed.rss().replace("–", "--")     # replace hyphens with readable char
+# write RSS feed to feed.xml
+with open("feed.xml", "w") as file:
+    file.write(rss)
+</pre>
+</div>
+
+<p>
+Here it is! 57 lines, and I even managed to sprinkle in some comments! The crux of this problem was easily solved using the packages <a href="https://pypi.org/project/beautifulsoup4/"><code>BeautifulSoup4</code></a> (why is it called that?) and <a href="https://github.com/svpino/rfeed">rfeed</a>, the former of which allows me to take HTML into an easily managable object format and the latter providing a neat framework to make an RSS file.
+</p>
+
+<p>
+I begin by grabbing all the HTML files in my <code>blog/</code> directory because they're the only ones I'm interested in finding updates for &#x2013; if you want different ones, just tweak this code block:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"># Get all the HTML files in the blog section
+htmls = [x for x in os.listdir(os.getcwd() + "/blog") if x.endswith('.html')]
+</pre>
+</div>
+
+<p>
+Replace <code>os.getcwd() + "/blog"</code> with your directory of interest. If you have multiple, repeat this multiple times, each time performing <code>htmls.extend([...])</code>. Then, iterating over every file, I do a bit of trickery on my footer to extract the relevant data:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">name = soup.find("p", "author").text.strip("Author:").split(" (")[0]
+date = soup.find("p", "modified").text.strip("Last Modified: ")
+dt = datetime.strptime(date, "%Y %b %d")
+url  = "https://mchartigan.github.io/blog/" + path
+</pre>
+</div>
+
+<p>
+Here is probably the most mutable bit of code, so just replace with whatever you need to do to get the author, pubDate, description, etc. info needed for the RSS item. Remember: as long as it works, it can be as heinous as you want. I use this info to generate an <code>Item</code> that gets passed in a list to <code>rfeed</code>'s <code>Feed</code> object. This <code>Feed</code> object represents a single channel of an RSS feed. If you want to have different feeds that can be subscribed to by RSS readers, make a separate <code>Feed</code> for each one and populate it with <code>Item</code> s, then just append everything to the same file here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">with open("feed.xml", "w") as file:
+    file.write(rss)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7a238f" class="outline-3">
+<h3 id="orgf7a238f">Conclusion</h3>
+<div class="outline-text-3" id="text-orgf7a238f">
+<p>
+Now the unfortunate part is you have to run this whenever you update your site with something worth adding to the RSS feed. Automate this however you like if you need to; I blog so infrequently that it honestly isn't worth the time (Though to be fair I spent around 30 minutes trying and succeeding in  getting a Github Action to do this, but it needed to be run exclusively before the main site compiling and Github wouldn't let me edit their <code>pages-build-deployment</code> Action so I gave up). See the full <a href="https://github.com/mchartigan/mchartigan.github.io/blob/main/rss.py"><code>rss.py</code> file</a> on my Github in case I've updated it and not this article, along with the <a href="https://github.com/mchartigan/mchartigan.github.io/blob/main/feed.xml"><code>feed.xml</code></a> it generates! RSS is dead, long live RSS!
+</p>
+
+
+
+<p>
+<i>P.S.
+This would've been way easier if I just blogged in Markdown and used Jekyll to compile everything, which automatically makes an RSS feed for you. Oh well, too late to turn back now &#x2013; or is it?</i>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mark Hartigan (<a href="mailto:mark.hartigan@protonmail.com">mark.hartigan@protonmail.com</a>)</p>
+<p class="modified">Last Modified: 2022 Jan 18 23:21</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3) | <a href="https://mchartigan.github.io/feed.xml">Feed</a></p>
+<p class="credit">Background created using <a href="https://github.com/nickymarino/virgo">Virgo</a></p>
+</div>
+</body>
+</html>

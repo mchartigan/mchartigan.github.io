@@ -10,6 +10,14 @@
         <generator>rfeed v1.0.0</generator>
         <docs>https://github.com/svpino/rfeed/blob/master/README.md</docs>
         <item>
+            <title>Making an RSS Feed for a Static HTML Site</title>
+            <link>https://mchartigan.github.io/blog/20220118.html</link>
+            <description>So I've been writing posts for my site in Emacs 27 as a way to familiarize myself with the interface -- in the event I need to use a text editor, I don't want to be completely out of my depth. I've come to realize, however, that I don't know how to program in Lisp. This poses somewhat of an issue when Emacs uses Lisp for any and all scripting and configuration. And you know what? I don't have any interest in learning Lisp! I have yet to encounter any other use case for it to convince me to invest the time, so I've concluded that I have better things to do with my time. Unfortunately, this decision promptly bit me in the ass when I wanted to add an RSS feed to my personal site.</description>
+            <author> Mark Hartigan</author>
+            <pubDate>Tue, 18 Jan 2022 23:21:00 GMT</pubDate>
+            <guid isPermaLink="true">https://mchartigan.github.io/blog/20220118.html</guid>
+        </item>
+        <item>
             <title>Masala Gravy Recipe</title>
             <link>https://mchartigan.github.io/blog/20210805.html</link>
             <description>Goes great over rice or with naan! Paneer and vegetables go well to keep the recipe vegetarian.</description>

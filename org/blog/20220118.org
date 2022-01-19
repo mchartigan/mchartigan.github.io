@@ -1,0 +1,122 @@
+#+title: Making an RSS Feed for a Static HTML Site
+#+author: Mark Hartigan
+#+email: mark.hartigan@protonmail.com
+#+date: 2022 Jan 18 23:21
+#+options: toc:nil num:nil
+#+options: html-link-use-abs-url:nil html-postamble:t
+#+options: html-preamble:t html-scripts:t html-style:nil
+#+options: html5-fancy:nil tex:t
+#+description: Want to make an RSS feed for your Github Pages site or other static website in <current year>? Weird but ok, I'll show you how.
+#+keywords:
+#+html_link_home: ../index.html
+#+html_link_up: ../index.html
+#+html_mathjax:
+#+html_head: <link rel="preconnect" href="https://fonts.gstatic.com">
+#+html_head: <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+#+html_head: <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+#+html_head: <link rel="icon" type="image/png" href="ref/favicon.png" />
+#+html_head: <script data-goatcounter="https://mchartigan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+#+subtitle:
+#+latex_header:
+
+* January 18, 2022
+
+So I've been writing posts for my site in Emacs 27 as a way to familiarize myself with the interface -- in the event I need to use a text editor, I don't want to be completely out of my depth. I've come to realize, however, that I don't know how to program in Lisp. This poses somewhat of an issue when Emacs uses Lisp for any and all scripting and configuration. And you know what? I don't have any interest in learning Lisp! I have yet to encounter any other use case for it to convince me to invest the time, so I've concluded that I have better things to do with my time. Unfortunately, this decision promptly bit me in the ass when I wanted to add an RSS feed to my personal site.
+
+I found [[https://ogbe.net/blog/blogging_with_org.html][this wonderful guide]] from Dennis Ogbe on creating a single RSS ~.xml~ file using ~ox-rss.el~, but the careful observer will note that the ~.el~ extension means it's written in Emacs Lisp. After messing around for a while and getting completely out of my depth, I determined to slink meekly back into my depth and write the same thing in Python.
+
+** The Solution
+
+#+begin_src python
+from bs4 import BeautifulSoup   # HTML parser
+from lib.rfeed.rfeed import *   # RSS generator
+from datetime import datetime
+import os
+
+
+# Get all the HTML files in the blog section
+htmls = [x for x in os.listdir(os.getcwd() + "/blog") if x.endswith('.html')]
+htmls.sort(reverse=True) # sort newest to oldest
+
+items = []
+
+# Generate an item for all blog posts. The description is the first paragraph.
+for path in htmls:
+    with open("blog/" + path) as file:
+        soup = BeautifulSoup(file, "html.parser")
+
+    name = soup.find("p", "author").text.strip("Author:").split(" (")[0]
+    date = soup.find("p", "modified").text.strip("Last Modified: ")
+    try:    # try to extract time as well as date from newer files
+        dt = datetime.strptime(date, "%Y %b %d %H:%M")
+    except:
+        dt = datetime.strptime(date, "%Y %b %d")
+    url  = "https://mchartigan.github.io/blog/" + path
+
+    items.append(Item(
+        title = soup.title.string,
+        link = url,
+        author = name,
+        guid = Guid(url),
+        pubDate = dt,
+        description = soup.find_all("p")[0].text.strip()
+    ))
+
+# Generate main channel item
+with open("index.html") as file:
+    soup = BeautifulSoup(file, "html.parser")
+
+date = soup.find("p", "modified").text.strip("Last Modified: ")
+try:    # try to extract time as well as date from newer files
+    dt = datetime.strptime(date, "%Y %b %d %H:%M")
+except:
+    dt = datetime.strptime(date, "%Y %b %d")
+
+feed = Feed(
+    title = soup.title.string,
+    link = "https://mchartigan.github.io/",
+    lastBuildDate = dt,
+    language = "en-US",
+    items = items,
+    description = soup.find_all("p")[0].text.strip()
+)
+
+rss = feed.rss().replace("–", "--")     # replace hyphens with readable char
+# write RSS feed to feed.xml
+with open("feed.xml", "w") as file:
+    file.write(rss)
+#+end_src
+
+Here it is! 57 lines, and I even managed to sprinkle in some comments! The crux of this problem was easily solved using the packages [[https://pypi.org/project/beautifulsoup4/][~BeautifulSoup4~]] (why is it called that?) and [[https://github.com/svpino/rfeed][rfeed]], the former of which allows me to take HTML into an easily managable object format and the latter providing a neat framework to make an RSS file.
+
+I begin by grabbing all the HTML files in my ~blog/~ directory because they're the only ones I'm interested in finding updates for -- if you want different ones, just tweak this code block:
+
+#+begin_src python
+# Get all the HTML files in the blog section
+htmls = [x for x in os.listdir(os.getcwd() + "/blog") if x.endswith('.html')]
+#+end_src
+
+Replace ~os.getcwd() + "/blog"~ with your directory of interest. If you have multiple, repeat this multiple times, each time performing ~htmls.extend([...])~. Then, iterating over every file, I do a bit of trickery on my footer to extract the relevant data:
+
+#+begin_src python
+name = soup.find("p", "author").text.strip("Author:").split(" (")[0]
+date = soup.find("p", "modified").text.strip("Last Modified: ")
+dt = datetime.strptime(date, "%Y %b %d")
+url  = "https://mchartigan.github.io/blog/" + path
+#+end_src
+
+Here is probably the most mutable bit of code, so just replace with whatever you need to do to get the author, pubDate, description, etc. info needed for the RSS item. Remember: as long as it works, it can be as heinous as you want. I use this info to generate an ~Item~ that gets passed in a list to ~rfeed~'s ~Feed~ object. This ~Feed~ object represents a single channel of an RSS feed. If you want to have different feeds that can be subscribed to by RSS readers, make a separate ~Feed~ for each one and populate it with ~Item~ s, then just append everything to the same file here:
+
+#+begin_src python
+with open("feed.xml", "w") as file:
+    file.write(rss)
+#+end_src
+
+** Conclusion
+
+Now the unfortunate part is you have to run this whenever you update your site with something worth adding to the RSS feed. Automate this however you like if you need to; I blog so infrequently that it honestly isn't worth the time (Though to be fair I spent around 30 minutes trying and succeeding in  getting a Github Action to do this, but it needed to be run exclusively before the main site compiling and Github wouldn't let me edit their ~pages-build-deployment~ Action so I gave up). See the full [[https://github.com/mchartigan/mchartigan.github.io/blob/main/rss.py][~rss.py~ file]] on my Github in case I've updated it and not this article, along with the [[https://github.com/mchartigan/mchartigan.github.io/blob/main/feed.xml][~feed.xml~]] it generates! RSS is dead, long live RSS!
+
+
+
+/P.S.
+This would've been way easier if I just blogged in Markdown and used Jekyll to compile everything, which automatically makes an RSS feed for you. Oh well, too late to turn back now -- or is it?/

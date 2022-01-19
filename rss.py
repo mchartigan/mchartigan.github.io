@@ -17,7 +17,10 @@ for path in htmls:
 
     name = soup.find("p", "author").text.strip("Author:").split(" (")[0]
     date = soup.find("p", "modified").text.strip("Last Modified: ")
-    dt = datetime.strptime(date, "%Y %b %d")
+    try:    # try to extract time as well as date from newer files
+        dt = datetime.strptime(date, "%Y %b %d %H:%M")
+    except:
+        dt = datetime.strptime(date, "%Y %b %d")
     url  = "https://mchartigan.github.io/blog/" + path
 
     items.append(Item(
@@ -34,7 +37,10 @@ with open("index.html") as file:
     soup = BeautifulSoup(file, "html.parser")
 
 date = soup.find("p", "modified").text.strip("Last Modified: ")
-dt = datetime.strptime(date, "%Y %b %d")
+try:    # try to extract time as well as date from newer files
+    dt = datetime.strptime(date, "%Y %b %d %H:%M")
+except:
+    dt = datetime.strptime(date, "%Y %b %d")
 
 feed = Feed(
     title = soup.title.string,
