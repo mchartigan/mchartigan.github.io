@@ -1,12 +1,12 @@
 #+title: Projects
 #+author: Mark Hartigan
 #+email: mark.hartigan@protonmail.com
-#+date: 2022 Jan 15
+#+date: 2022 Jan 20 12:37
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
 #+options: html-preamble:t html-scripts:t html-style:nil
 #+options: html5-fancy:nil tex:t
-#+description:
+#+description: Things I'm working on and have done in the past!
 #+keywords:
 #+html_link_home: index.html
 #+html_link_up:
@@ -20,9 +20,12 @@
 #+latex_header:
 
 * TODO Current
++ Making a simple e-reader using an e-Paper display and ESP32 MCU
 + Developing a stupid personal AI on my homebrew [[file:ref/walkman.jpg][Pi-Walkman]] platform
 
 * DONE Past
++ [2021 WINTER] [[https://github.com/mchartigan/adventofcode-2021][Advent of Code 2021]]! A 25-day programming challenge
++ [2021 SUMMER] [[https://github.com/mchartigan/dotfiles][Polybar]] on Ubuntu (blog post in the works)
 + [2021 SPRING] [[https://github.com/mchartigan/protogenesis][protogenesis]] - A physics-based procedural planet generator
 + [2021 SPRING] Turn my keyboard into a [[file:blog/20210216.html][portable synth]]
 + [2020 WINTER] [[https://mchartigan.github.io/LiveTeX][LiveTeX]] - A small but snappy live equation editor

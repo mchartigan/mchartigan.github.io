@@ -1,12 +1,12 @@
 #+title: Mark Hartigan
 #+author: Mark Hartigan
 #+email: mark.hartigan@protonmail.com
-#+date: 2022 Jan 18 23:39
+#+date: 2022 Jan 20 12:48
 #+options: toc:nil num:nil
 #+options: html-link-use-abs-url:nil html-postamble:t
 #+options: html-preamble:t html-scripts:t html-style:nil
 #+options: html5-fancy:nil tex:t
-#+description:
+#+description: Welcome to my site, please excuse the mess
 #+keywords:
 #+html_link_home: index.html
 #+html_link_up:
